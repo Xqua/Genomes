@@ -80,11 +80,19 @@ Options:
 REQUIREMENT
 ============================================================================================================
 SNAP software 
-included in the repository
+included in the repository (hard to find and not maintained anymore)
+
 Augustus Software
 http://bioinf.uni-greifswald.de/augustus/downloads/
+
 uClust
 http://www.drive5.com/uclust/downloads1_2_22q.html
+
+Pandas
+http://pandas.pydata.org/
+can be installed on a linux machine with:
+sudo pip install pandas
+
 
 ============================================================================================================
 MISC

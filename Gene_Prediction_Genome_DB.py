@@ -9,7 +9,6 @@ from optparse import OptionParser
 from subprocess import Popen
 import subprocess
 import time
-import numpy as np
 
 parser = OptionParser()
 parser.add_option("-g", "--genome_folder", dest="genomeFolder", default="None",
