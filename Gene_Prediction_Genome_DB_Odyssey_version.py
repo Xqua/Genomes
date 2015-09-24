@@ -59,7 +59,7 @@ for genome in list_genomes:
 if not os.path.isdir('SLURM'):
 	os.mkdir('SLURM')
 
-jobID = 0 
+jobID = 1
 for cmd in cmdToRun:
 	f = open('./SLURM/CDS_predict_%s.sh'%jobID,'w')
 	f.write('#!/bin/sh\n')
@@ -83,4 +83,5 @@ module load centos6/augustus-3.0
 module load centos6/snap-2013-11-29''')
 
 f.write('\n\nsh %s/SLURM/CDS_predict_"${SLURM_ARRAY_TASK_ID}".sh' % os.path.abspath('.'))
+f.write('\n\n# To run please execute\n#    sbatch --array=1-%s tophat.sh' % len(cmdToRun))
 f.close()
