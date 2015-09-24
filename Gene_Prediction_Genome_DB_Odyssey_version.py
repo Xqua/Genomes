@@ -65,6 +65,7 @@ for cmd in cmdToRun:
 	f.write('#!/bin/sh\n')
 	f.write(' '.join(cmd))
 	f.close()
+	jobID += 1
 
 f = open('SLURM_CDS_prediction.sh','w')
 f.write('''#!/bin/bash 
