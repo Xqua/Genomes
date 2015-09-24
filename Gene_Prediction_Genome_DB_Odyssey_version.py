@@ -69,17 +69,18 @@ for cmd in cmdToRun:
 
 f = open('SLURM_CDS_prediction.sh','w')
 f.write('''#!/bin/bash 
-	# 
-	#SBATCH -J tophat # A single job name for the array 
-	#SBATCH -n 1 # Number of cores 
-	#SBATCH -N 1 # All cores on one machine 
-	#SBATCH -p serial_requeue # Partition 
-	#SBATCH --mem 4000 # Memory request 
-	#SBATCH -t 0-24:00 # 2 hours (D-HH:MM) 
-	#SBATCH -o log_CDS_discovery_%A_%a.out # Standard output 
-	#SBATCH -e log_CDS_discovery_%A_%a.err # Standard error
+# 
+#SBATCH -J tophat # A single job name for the array 
+#SBATCH -n 1 # Number of cores 
+#SBATCH -N 1 # All cores on one machine 
+#SBATCH -p serial_requeue # Partition 
+#SBATCH --mem 4000 # Memory request 
+#SBATCH -t 0-24:00 # 2 hours (D-HH:MM) 
+#SBATCH -o log_CDS_discovery_%A_%a.out # Standard output 
+#SBATCH -e log_CDS_discovery_%A_%a.err # Standard error
 
-	module load centos6/augustus-3.0
-	module load centos6/snap-2013-11-29''')
+module load centos6/augustus-3.0
+module load centos6/snap-2013-11-29''')
+
 f.write('\n\nsh %s/SLURM/CDS_predict_"${SLURM_ARRAY_TASK_ID}".sh' % os.path.abspath('.'))
 f.close()
