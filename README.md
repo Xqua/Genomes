@@ -84,6 +84,7 @@ included in the repository (hard to find and not maintained anymore)
 
 Augustus Software
 http://bioinf.uni-greifswald.de/augustus/downloads/
+http://bioinf.uni-greifswald.de/augustus/binaries/augustus.current.tar.gz
 
 uClust
 http://www.drive5.com/uclust/downloads1_2_22q.html
