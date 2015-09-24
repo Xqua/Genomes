@@ -56,9 +56,12 @@ for genome in list_genomes:
 		print "no Genome found ! O.o Weirrrrddddd"	
 
 # raw_input("ready ?")
+if not os.path.isdir('SLURM'):
+	os.mkdir('SLURM')
+
 jobID = 0 
 for cmd in cmdToRun:
-	f = open('CDS_predict_%s.sh'%jobID,'w')
+	f = open('./SLURM/CDS_predict_%s.sh'%jobID,'w')
 	f.write('#!/bin/sh\n')
 	f.write(' '.join(cmd))
 	f.close()
@@ -78,7 +81,7 @@ f.write('''#!/bin/bash
 	module load centos6/augustus-3.0
 	module load centos6/snap-2013-11-29
 
-	sh CDS_predict_"${SLURM_ARRAY_TASK_ID}".sh
-	''')
+	sh %s/SLURM/CDS_predict_"${SLURM_ARRAY_TASK_ID}".sh
+	''' % os.path.abspath('.'))
 
 
