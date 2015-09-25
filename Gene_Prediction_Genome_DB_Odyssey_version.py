@@ -80,7 +80,7 @@ f.write('''#!/bin/bash
 #SBATCH -e log_CDS_discovery_%A_%a.err # Standard error
 
 module load augustus/3.0.3-fasrc02
-module load centos6/snap-2013-11-29
+module load snap/2013.11.29-fasrc01
 export ZOE=/n/sw/centos6/snap-2013-11-29/''')
 
 f.write('\n\nsh %s/SLURM/CDS_predict_"${SLURM_ARRAY_TASK_ID}".sh' % os.path.abspath('.'))
