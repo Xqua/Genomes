@@ -80,9 +80,10 @@ f.write('''#!/bin/bash
 #SBATCH -e log_CDS_discovery_%A_%a.err # Standard error
 
 module load centos6/augustus-3.0
+module load centos6/boost-1.55.0
 module load centos6/snap-2013-11-29
 export ZOE=/n/sw/centos6/snap-2013-11-29/''')
 
 f.write('\n\nsh %s/SLURM/CDS_predict_"${SLURM_ARRAY_TASK_ID}".sh' % os.path.abspath('.'))
-f.write('\n\n# To run please execute\n#    sbatch --array=1-%s tophat.sh' % len(cmdToRun))
+f.write('\n\n# To run please execute\n#    sbatch --array=1-%s SLURM_CDS_prediction.sh' % len(cmdToRun))
 f.close()
