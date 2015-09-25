@@ -79,7 +79,7 @@ f.write('''#!/bin/bash
 #SBATCH -o log_CDS_discovery_%A_%a.out # Standard output 
 #SBATCH -e log_CDS_discovery_%A_%a.err # Standard error
 
-module load centos6/augustus-3.0
+module load augustus/3.0.3-fasrc02
 module load centos6/boost-1.55.0
 module load centos6/snap-2013-11-29
 export ZOE=/n/sw/centos6/snap-2013-11-29/''')
