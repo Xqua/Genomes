@@ -16,7 +16,7 @@ parser.add_option("-o", "--output", dest="dbPath", default="hmmer_db.fasta",
                   help="Location of the output database file")
 parser.add_option("-6", "--6frames",
                   action="store_true", dest="doFrames", default=False,
-                  help="don't print status messages to stdout")
+                  help="Perform 6 frame translation (similar to tblastn)")
 
 (options, args) = parser.parse_args()
 
@@ -98,7 +98,7 @@ out = open(dbPath,'w')
 list_genomes = os.listdir(genomeFolder)
 for genome in list_genomes:
 	print "Opening Genome: %s" % genome
-	path = os.path.join(genomeFolder, genome, genome+"_genomic.fna.gz")
+	path = os.path.join(genomeFolder, genome)
 	print path
 	g = gzip.open(path)
 	fasta = readFASTA(g)
