@@ -35,8 +35,9 @@ def prot2fasta(proteins, path):
 	GIDs = proteins.keys()
 	GIDs.sort()
 	for GID in GIDs:
-		f.write('> '+GID+'\n')
-		f.write(proteins[GID] + '\n')
+		if proteins[GID]:
+			f.write('> '+GID+'\n')
+			f.write(proteins[GID] + '\n')
 	f.close()
 
 def Merge(file1, file2, outPath):
