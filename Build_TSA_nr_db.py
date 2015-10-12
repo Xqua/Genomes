@@ -96,22 +96,26 @@ def readFASTA(f):
 
 out = open(dbPath,'w')
 list_genomes = os.listdir(genomeFolder)
+n = 0
 for genome in list_genomes:
-	print "Opening Genome: %s" % genome
-	path = os.path.join(genomeFolder, genome)
-	print path
-	g = gzip.open(path)
-	fasta = readFASTA(g)
-	g.close()
-	for ID in fasta.keys():
-		if doFrames:
-			prots = sixFrameTranslate(fasta[ID])
-			for prot in prots:
+	if "listing" not in genome:
+		print "Opening Genome: %s     %s/%s" % (genome, n, len(list_genomes))
+		path = os.path.join(genomeFolder, genome)
+		print path
+		g = gzip.open(path)
+		fasta = readFASTA(g)
+		g.close()
+		for ID in fasta.keys():
+			if doFrames:
+				prots = sixFrameTranslate(fasta[ID])
+				i=1
+				for prot in prots:
+					out.write('>%s|%s|frame_%s\n'%(genome, ID,i))
+					out.write(prot + '\n')
+					i+=1
+			else:
+				prot = Translate(fasta[ID])
 				out.write('>%s|%s\n'%(genome, ID))
 				out.write(prot + '\n')
-		else:
-			prot = Translate(fasta[ID])
-			out.write('>%s|%s\n'%(genome, ID))
-			out.write(prot + '\n')
-	print "genome %s: Added !" % genome
+		print "genome %s: Added !" % genome
 
