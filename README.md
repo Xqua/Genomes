@@ -4,10 +4,10 @@
 Spider to crawl the NCBI genome FTP database.
 Needs to be provided with a CSV file containing a collumn named:
 "Accession number"
+
 This collumn will be used to match the Genome ID with the NCBI database
 
-This script will populate the folder ftp.ncbi.nih.gov/genomes/all 
-with all the genomes.
+This script will populate the folder ftp.ncbi.nih.gov/genomes/all with all the genomes.
 ```
 Usage: genome_sucking.py [options]
 
@@ -23,6 +23,7 @@ Options:
 Script that will perform CDS discovery to the genomes using different search algorithms.
 Current version uses SNAP and Augustus (should be extended to using GeneID and GeneMark 
 for complete discovery)
+
 This script takes as input the location of the downloaded genomes (ex: ftp.ncbi.nih.gov/genomes/all )
 It will then crawl through them and launch augustus and snap on them, and gunzip them if needed. 
 You can set the number of CPU to be used for the analysis. 
@@ -30,6 +31,7 @@ You can set the number of CPU to be used for the analysis.
 Current version uses the Fly ORF/CDS HMM model.
 
 more info on SNAP: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC421630/
+
 more info on Augustus: http://bioinf.uni-greifswald.de/augustus/
 ```
 Usage: Gene_Prediction_Genome_DB.py [options]
@@ -46,9 +48,11 @@ Options:
 ## Build_nr_DB.py
 
 Script that crawl the genomes (--genome) and looks for the output of SNAP and Augustus.
+
 If both files are present, it extracts the protein sequences, merge them into one fasta file.
 This fasta file is then sorted by sequence lenght, and uClust is launched on it to 
 create a non redundant database (nrdb).
+
 When uClust created a nrdb for all available files, it then annotates them with the genome name.
 Those files are then merged into one big nrdb file (--database) containing all the protein sequences. 
 
@@ -82,16 +86,21 @@ SNAP software
 included in the repository (hard to find and not maintained anymore)
 
 Augustus Software
+
 http://bioinf.uni-greifswald.de/augustus/downloads/
+
 http://bioinf.uni-greifswald.de/augustus/binaries/augustus.current.tar.gz
 
 uClust
+
 http://www.drive5.com/uclust/downloads1_2_22q.html
 
 Pandas
+
 http://pandas.pydata.org/
+
 can be installed on a linux machine with:
-sudo pip install pandas
+`sudo pip install pandas`
 
 
 
