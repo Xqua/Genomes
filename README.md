@@ -1,6 +1,6 @@
-============================================================================================================
-genome_sucking.py
-============================================================================================================
+# SCRIPTS
+
+## genome_sucking.py
 Spider to crawl the NCBI genome FTP database.
 Needs to be provided with a CSV file containing a collumn named:
 "Accession number"
@@ -8,7 +8,7 @@ This collumn will be used to match the Genome ID with the NCBI database
 
 This script will populate the folder ftp.ncbi.nih.gov/genomes/all 
 with all the genomes.
-
+```
 Usage: genome_sucking.py [options]
 
 Options:
@@ -16,11 +16,10 @@ Options:
   -p PATHCSV, --csv_file=PATHCSV
                         [Required] Location of the csv file containing all the
                         genomes ID in the collumn named 'Accession number'
+```
 
+## Gene_Prediction_Genome_DB.py
 
-============================================================================================================
-Gene_Prediction_Genome_DB.py
-============================================================================================================
 Script that will perform CDS discovery to the genomes using different search algorithms.
 Current version uses SNAP and Augustus (should be extended to using GeneID and GeneMark 
 for complete discovery)
@@ -32,7 +31,7 @@ Current version uses the Fly ORF/CDS HMM model.
 
 more info on SNAP: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC421630/
 more info on Augustus: http://bioinf.uni-greifswald.de/augustus/
-
+```
 Usage: Gene_Prediction_Genome_DB.py [options]
 
 Options:
@@ -42,10 +41,10 @@ Options:
                         genomes
   -c CPU, --cpu=CPU     Number of CPU to use for the analysis. Each core is
                         used to launch one instance of SNAP or Augustus.
+```
 
-============================================================================================================
-Build_nr_DB.py
-============================================================================================================
+## Build_nr_DB.py
+
 Script that crawl the genomes (--genome) and looks for the output of SNAP and Augustus.
 If both files are present, it extracts the protein sequences, merge them into one fasta file.
 This fasta file is then sorted by sequence lenght, and uClust is launched on it to 
@@ -59,7 +58,7 @@ using the parameter (--precision).
 This script takes as input the location of the downloaded genomes (ex: ftp.ncbi.nih.gov/genomes/all )
 
 more info on uClust: http://drive5.com/usearch/manual/uclust_algo.html
-
+```
 Usage: Build_nr_DB.py [options]
 
 Options:
@@ -75,10 +74,10 @@ Options:
                         Overlap Threshold for uClust to call two sequence
                         identical (uClust will keep the longer sequence of the
                         two)
+```
 
-============================================================================================================
-REQUIREMENT
-============================================================================================================
+# REQUIREMENT
+
 SNAP software 
 included in the repository (hard to find and not maintained anymore)
 
@@ -95,8 +94,8 @@ can be installed on a linux machine with:
 sudo pip install pandas
 
 
-============================================================================================================
-MISC
-============================================================================================================
+
+# MISC
+
 for more information on gene discovery 
 https://www.broadinstitute.org/annotation/genome/neurospora/GeneFinding.html
