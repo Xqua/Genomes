@@ -1,5 +1,8 @@
 # SCRIPTS
 
+## HOW TO
+The normal order by which one would run those is to first run `genome_sucking.py` to gather a database of genomes. Then one would run `Gene_Prediction_Genome_DB.py` in order to generate the CDS predictions for all the genomes. Finally, one would run `Build_nr_DB.py` in order to obtain a non-redundant database containing all the unique sequences.
+
 ## genome_sucking.py
 Spider to crawl the NCBI genome FTP database.
 Needs to be provided with a CSV file containing a collumn named:
